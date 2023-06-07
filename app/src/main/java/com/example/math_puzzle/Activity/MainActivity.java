@@ -2,10 +2,12 @@ package com.example.math_puzzle.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.math_puzzle.Config;
 import com.example.math_puzzle.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,7 +24,9 @@ public class MainActivity extends AppCompatActivity {
         continue1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(MainActivity.this, Level_Board_Activity.class);
+                intent.putExtra("level", Config.imgArr);
+                startActivity(intent);
             }
         });
     }

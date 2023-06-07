@@ -2,11 +2,16 @@ package com.example.math_puzzle.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.math_puzzle.Config;
 import com.example.math_puzzle.R;
 
 public class Level_Board_Activity extends AppCompatActivity {
@@ -14,6 +19,8 @@ public class Level_Board_Activity extends AppCompatActivity {
     ImageView skip,hint,game_board,delete;
     TextView level_display,submit,n1,n2,n3,n4,n5,n6,n7,n8,n9,n0;
     EditText ans_txt;
+    int levelNo;
+    String ans="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,5 +43,130 @@ public class Level_Board_Activity extends AppCompatActivity {
         n9 = findViewById(R.id.n9);
         n0 = findViewById(R.id.n0);
         ans_txt = findViewById(R.id.ans_txt);
+
+        levelNo = getIntent().getIntExtra("level",0);
+
+        level_display.setText("LEVEL"+(levelNo +1));
+        game_board.setImageResource(Config.imgArr[levelNo]);
+
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                levelNo++;
+                level_display.setText("LEVEL"+(levelNo +1));
+                game_board.setImageResource(Config.imgArr[levelNo]);
+            }
+        });
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ans = ans.substring(0,ans.length()-1);
+                ans_txt.setText(ans);
+            }
+        });
+        n1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ans_txt.setText("1");
+                ans = ans + 1;
+                ans_txt.setText(ans);
+            }
+        });
+        n2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ans_txt.setText("2");
+                ans = ans + 2;
+                ans_txt.setText(ans);
+            }
+        });
+        n3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ans_txt.setText("3");
+                ans = ans + 3;
+                ans_txt.setText(ans);
+            }
+        });
+        n4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ans_txt.setText("4");
+                ans = ans + 4;
+                ans_txt.setText(ans);
+            }
+        });
+        n5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ans_txt.setText("5");
+                ans = ans + 5;
+                ans_txt.setText(ans);
+            }
+        });
+        n6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ans_txt.setText("6");
+                ans = ans + 6;
+                ans_txt.setText(ans);
+            }
+        });
+        n7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ans_txt.setText("7");
+                ans = ans + 7;
+                ans_txt.setText(ans);
+            }
+        });
+        n8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ans_txt.setText("8");
+                ans = ans + 8;
+                ans_txt.setText(ans);
+            }
+        });
+        n9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ans_txt.setText("9");
+                ans = ans + 9;
+                ans_txt.setText(ans);
+            }
+        });
+        n0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ans_txt.setText("0");
+                ans = ans + 0;
+                ans_txt.setText(ans);
+            }
+        });
+        levelNo = getIntent().getIntExtra("level",0);//1
+        Log.d("TTT", "onCreate: LevelBoard levelNo="+levelNo);
+
+        level_display.setText("LEVEL"+(levelNo+1));
+        game_board.setImageResource(Config.imgArr[levelNo +1]);//1
+        submit.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                int temp=Integer.parseInt(ans);
+                if(Config.AnsArr[levelNo].equals(ans_txt.getText().toString()))
+                {
+                    Intent intent = new Intent(Level_Board_Activity.this, Win_Page_Activity.class);
+                    levelNo++;
+                    intent.putExtra("level", levelNo);
+                    startActivity(intent);
+                    finish();
+                }
+                else {
+                    Toast.makeText(Level_Board_Activity.this, "Wrong!!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+
     }
 }

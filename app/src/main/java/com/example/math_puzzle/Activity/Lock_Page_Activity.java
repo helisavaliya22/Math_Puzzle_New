@@ -18,7 +18,7 @@ public class Lock_Page_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_lock_page);
         gridView = findViewById(R.id.gridview);
 
-        adapter = new Lock_Adapter(Lock_Page_Activity.this,R.drawable.lock);
+        adapter = new Lock_Adapter(Lock_Page_Activity.this);
         gridView.setAdapter(adapter);
     }
 }

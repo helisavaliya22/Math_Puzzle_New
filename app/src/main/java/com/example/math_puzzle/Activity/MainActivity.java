@@ -29,13 +29,13 @@ public class MainActivity extends AppCompatActivity {
         preferences=getSharedPreferences("myPref",MODE_PRIVATE);
         editor=preferences.edit();
 
-        lastLevel=preferences.getInt("lastLevel",0);//5
+        lastLevel=preferences.getInt("lastLevel",-1);//-1
         Log.d("TTT", "onCreate: LastLevel="+lastLevel);
         continue1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Level_Board_Activity.class);
-                intent.putExtra("level", lastLevel);//5
+                intent.putExtra("level", lastLevel);//-1
                 startActivity(intent);
             }
         });

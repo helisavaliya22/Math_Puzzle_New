@@ -54,9 +54,9 @@ public class Level_Board_Activity extends AppCompatActivity {
         n0 = findViewById(R.id.n0);
         ans_txt = findViewById(R.id.ans_txt);
 
-        levelNo = getIntent().getIntExtra("level",0);//6
+        levelNo = getIntent().getIntExtra("level",0);//
         Log.d("TTT", "onCreate: LastLevel in BoardActvity="+levelNo);
-        level_display.setText("LEVEL" + (levelNo + 1));//7
+        level_display.setText("LEVEL" + (levelNo + 1));//0
 //        getImagesFromAssets();
 
         String[] images = new String[0];
@@ -75,7 +75,7 @@ public class Level_Board_Activity extends AppCompatActivity {
 
         InputStream inputstream = null;
         try {
-            inputstream = getAssets().open("images/" + imgArr.get(levelNo));//6
+            inputstream = getAssets().open("images/" + imgArr.get(levelNo));//0
             Drawable drawable = Drawable.createFromStream(inputstream, null);
             System.out.println("input Stream=" + drawable);
             game_board.setImageDrawable(drawable);
@@ -110,13 +110,14 @@ public class Level_Board_Activity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 int temp = Integer.parseInt(ans);
-                if (Config.AnsArr[levelNo].equals(ans_txt.getText().toString()))//6
+                if (Config.AnsArr[levelNo].equals(ans_txt.getText().toString()))//0
                 {
                     Intent intent = new Intent(Level_Board_Activity.this, Win_Page_Activity.class);
-                    levelNo++;
-                    editor.putString("levelStatus"+levelNo,"win");// levelStatus6=win
-                    editor.putInt("lastLevel",levelNo);//7
+
+                    editor.putString("levelStatus"+levelNo,"win");// levelStatus0=win
+                    editor.putInt("lastLevel",levelNo);//0
                     editor.commit();
+                    levelNo++;
                     intent.putExtra("level", levelNo);//7
                     startActivity(intent);
                     finish();

@@ -40,5 +40,13 @@ public class Win_Page_Activity extends AppCompatActivity {
                 finish();
             }
         });
+        main_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Win_Page_Activity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 }

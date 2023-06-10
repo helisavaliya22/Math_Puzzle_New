@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.Lock_Page_Activity">
+    tools:context=".Activity.Lock_Page_Activity"
+    android:background="@drawable/background">
 
     <GridView
         android:id="@+id/gridview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:numColumns="4"
-        tools:listitem="@layout/lock_page_item_layout"/>
+        android:numColumns="4"/>
 
 </LinearLayout>
